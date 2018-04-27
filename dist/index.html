@@ -1,0 +1,103 @@
+<html>
+  <head>
+   
+    <title>Ian Petrarca</title>
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
+    <script src="https://unpkg.com/super-hands@2.1.0/dist/super-hands.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v2.1.0/dist/aframe-physics-system.min.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/resonance-audio/build/resonance-audio.min.js"></script>
+
+  <script type="text/javascript" src="bundle.js"></script></head>
+  <body>
+
+                  <a-scene physics="gravity:-9.6" vr-mode-ui="enabled:true;">
+                      
+                        <a-entity id="enviro" position="0 0 0" environment="
+                        preset:default;
+                        playArea:1;
+                        groundYScale: 50;
+                        fog: 0;
+                        dressingAmount: 0;
+                        groundColor2: #ffffff;
+                        groundColor: #ffffff;
+                        groundTexture: walkernoise;
+                        grid:none;
+                        lightPosition: 0 10 5;
+                        active: true;
+                        shadow: true;">
+                    </a-entity>
+                          <a-assets>
+                            <a-mixin id="cube" geometry="primitive: box; width: 0.5; height: 0.5; depth: 0.5"
+                                    hoverable grabbable stretchable draggable droppable dynamic-body
+                                    shadow
+                                    event-set="_event: drag-drop; geometry.primitive: sphere; geometry.radius: 0.25"></a-mixin>
+              
+                
+                          <a-mixin id="wall" static-body geometry="primitive: plane; height: 10; width: 20" material="wireframe: true"></a-mixin>
+                
+                            <a-mixin id="cube-hovered" material="opacity: 0.7; transparent: true">
+                            </a-mixin>
+                            <a-mixin id="cube-dragover" material="wireframe: true;"></a-mixin>
+                          </a-assets>
+                
+                          <a-entity progressive-controls="objects: .cube, .room; maxLevel: point">
+                              <a-camera>
+                                  <a-entity listener class="gazecaster"></a-entity>
+                                </a-camera>
+                              <a-entity id="rhand"  class="right-controller"></a-entity>
+                              <a-entity id="lhand"  class="left-controller"></a-entity>
+                          </a-entity>
+                          
+                          <a-entity chord id="chord1_obj" class="cube" mixin="cube" position="0 2.6 -1.25" material="color:#f44336">
+                          </a-entity>
+                
+                          <a-entity mixin="wall" position="0 0 -10"></a-entity>
+                          <a-entity mixin="wall" position="0 0 10"></a-entity>
+                          <a-entity mixin="wall" rotation="0 90 0" position="-10 0 0"></a-entity>
+                          <a-entity mixin="wall" rotation="0 -90 0" position="10 0 0"></a-entity>
+
+                          <a-box class="room" curtains material="color:grey" position="0 3 -4" static-body width="3.25" height=".5" depth=".01">
+                            <a-text position="-1.42 -.05 .1" value="Choose Reverb Environment:"></a-text>
+                          </a-box>
+                
+
+                 
+
+                          
+                          <a-box class="room" curtains material="color:#1976d2 " position="0 1.25 -4" static-body width="2" height=".5" depth=".01">
+                            <a-animation attribute="scale" repeat="1" direction="alternate" begin="click" dur="200" to="1.25 1.25 1.75"></a-animation>
+                      
+                            <a-text position="-.65 0 .1" value="Curtain Walls"></a-text>
+                          </a-box>
+                
+                          <a-box class="room" marble material="color:#1976d2 " rotation="-10 0 0" position="0 .5 -4" static-body width="2" height=".5" depth=".01">
+                            <a-animation attribute="scale" repeat="1" direction="alternate" begin="click" dur="200" to="1.25 1.25 1.75"></a-animation>
+                      
+                            <a-text position="-.65 0 .1" value="Marble Walls"></a-text>
+                          </a-box>
+
+                          
+                          <a-box class="room" outdoors material="color:#1976d2 " rotation="0 0 0" position="0 2 -4" static-body width="2" height=".5" depth=".01">
+                            <a-animation attribute="scale" repeat="1" direction="alternate" begin="click" dur="200" to="1.25 1.25 1.75"></a-animation>
+                      
+                            <a-text position="-.48 0 .1" value="Outdoors"></a-text>
+                          </a-box>
+                
+                
+
+                
+                          <a-box material="color:#1976d2 " static-body width="1000" height="0.001" depth="1000" visible="false"></a-box>
+                
+                  </a-scene> 
+                </div>
+              
+            </div>
+      </div>
+    </div>
+
+ <script>
+   
+ </script>
+</body>
+</html>
